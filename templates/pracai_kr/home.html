@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<main role="main" class="container mt-5">
+  <section class="py-5 text-center">
+    <div class="container">
+      <h1 class="display-4 fw-bold">PracAI에 오신 것을 환영합니다</h1>
+      <p class="lead text-muted">AI 시뮬레이션을 활용하여 상담 핵심 기술을 연습할 수 있는 상호작용형 트레이닝 플랫폼입니다.</p>
+    </div>
+  </section>
+
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="fw-bold mb-4">이용 방법</h2>
+      <p class="text-muted">PracAI에서는 실제 내담자처럼 반응하는 AI와 실시간 상담 대화를 연습할 수 있습니다. 연습하고 싶은 기술을 선택하고, 내담자 메시지에 응답한 뒤, 부드럽고 구조화된 피드백을 받아보세요.</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">🧠 모듈 선택 (예: 반영, 탐색 등)</li>
+        <li class="list-group-item">💬 시뮬레이션 내담자의 말에 응답</li>
+        <li class="list-group-item">✅ 피드백 받고 다시 시도</li>
+        <li class="list-group-item">🔁 반복하며 자신감과 통찰력 키우기</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container">
+      <h2 class="fw-bold mb-4">AI와 대화하는 방법</h2>
+      <p class="mb-4">AI를 시뮬레이션 내담자나 기술 코치처럼 대할 수 있어요. 예를 들어 다음과 같이 말해보세요:</p>
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+          <div class="p-4 bg-white border rounded shadow-sm h-100">
+            <h5 class="text-primary">🗣 내담자에게 응답하기</h5>
+            <p><em>"지금 너무 막막하고 압도당하는 느낌이에요."</em></p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="p-4 bg-white border rounded shadow-sm h-100">
+            <h5 class="text-primary">❓ 도움 요청하기</h5>
+            <p><em>"복합 반영이 어떻게 들리는지 예시 줄 수 있어?"</em></p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="p-4 bg-white border rounded shadow-sm h-100">
+            <h5 class="text-primary">📌 진행 상황 확인</h5>
+            <p><em>"지금까지 잘하고 있나요?"</em></p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="p-4 bg-white border rounded shadow-sm h-100">
+            <h5 class="text-primary">🔄 다시 시작</h5>
+            <p><em>"다른 예제로 다시 해볼 수 있을까요?"</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="fw-bold mb-4">탐색 가능한 모듈</h2>
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+  
+        <div class="col">
+          <div class="p-4 bg-white border rounded shadow-sm h-100">
+            <h4 class="fw-semibold">가상 내담자 만나기</h4>
+            <p class="text-muted">다양한 이야기와 성격을 지닌 가상 내담자를 선택해 관계 형성 및 비구조화 상담 대화를 연습해보세요.</p>
+            <a href="{% url 'pracai_kr:client_list' %}" class="btn btn-primary btn-sm">내담자 목록 보기</a>
+          </div>
+        </div>
+  
+        <div class="col">
+          <div class="p-4 bg-white border rounded shadow-sm h-100">
+            <h4 class="fw-semibold">모의 상담</h4>
+            <p class="text-muted">AI 내담자와 전체 상담 세션을 연습하세요. 라포 형성부터 윤리적 딜레마, 위기 대응까지 포함됩니다.</p>
+            <a href="{% url 'pracai_kr:mock_therapy_list' %}" class="btn btn-primary btn-sm">모의 상담 시작</a>
+          </div>
+        </div>
+  
+        <div class="col">
+          <div class="p-4 bg-white border rounded shadow-sm h-100">
+            <h4 class="fw-semibold">반영 (바꾸어 말하기)</h4>
+            <p class="text-muted">내담자의 말을 반영하고 바꾸어 말하는 기술을 익혀 공감과 통찰을 높여보세요.</p>
+            <a href="{% url 'pracai_kr:reflection_list' %}" class="btn btn-primary btn-sm">반영 모듈 보기</a>
+          </div>
+        </div>
+  
+        <div class="col">
+          <div class="p-4 bg-white border rounded shadow-sm h-100">
+            <h4 class="fw-semibold">탐색</h4>
+            <p class="text-muted">개방적이고 감정적으로 민감한 질문을 던져 대화를 심화시키는 능력을 키워보세요.</p>
+            <a href="{% url 'pracai_kr:probing_list' %}" class="btn btn-primary btn-sm">탐색 모듈 보기</a>
+          </div>
+        </div>
+  
+        <div class="col">
+          <div class="p-4 bg-white border rounded shadow-sm h-100">
+            <h4 class="fw-semibold">위험 평가</h4>
+            <p class="text-muted">자살 또는 자해 가능성을 포함한 위험 요소를 평가하고 임상적으로 대응하는 방법을 연습하세요.</p>
+            <a href="{% url 'pracai_kr:risk_assessment_list' %}" class="btn btn-primary btn-sm">위험 평가 모듈</a>
+          </div>
+        </div>
+  
+        <div class="col">
+          <div class="p-4 bg-white border rounded shadow-sm h-100">
+            <h4 class="fw-semibold">자기 성찰</h4>
+            <p class="text-muted">AI 코치와 함께 저널링 또는 대화를 통해 자신의 성장, 가치, 반응을 성찰해보세요.</p>
+            <a href="{% url 'pracai_kr:self_reflection_list' %}" class="btn btn-primary btn-sm">자기 성찰 시작</a>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+</main>
+
+{% endblock %}

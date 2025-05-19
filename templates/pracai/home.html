@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<main role="main" class="container mt-5">
+
+  <!-- Hero Section -->
+  <section class="py-5 text-center">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Practice Therapy. Build Confidence.</h1>
+      <p class="lead text-muted">PracAI helps you grow as a therapist through immersive, AI-driven practice with virtual clients — anytime, anywhere.</p>
+      <a href="{% url 'pracai:client_list' %}" class="btn btn-primary btn-lg mt-3">Meet Your First Client</a>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="fw-bold mb-4 text-center">Your Training Journey</h2>
+      <div class="row text-center">
+        <div class="col-md-4">
+          <div class="p-4">
+            <h3>👥 Meet Virtual Clients</h3>
+            <p>Select from diverse clients with realistic challenges and unique personalities. Each session simulates a real clinical interaction.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4">
+            <h3>🗣 Practice Counseling Skills</h3>
+            <p>Respond to client prompts in a safe, low-pressure space. Practice reflection, probing, risk assessment, and more.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4">
+            <h3>📝 Reflect & Get Feedback</h3>
+            <p>Write your own reflection or receive AI feedback that mimics supervisor guidance. Track your growth over time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore Modules -->
+  <section class="py-5">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-3">Target Specific Skills</h2>
+      <p class="text-muted mb-4">Use focused practice modules to build fluency with foundational techniques and clinical decision-making.</p>
+      <a href="{% url 'pracai:reflection_list' %}" class="btn btn-outline-primary me-2 mb-2">Reflection</a>
+      <a href="{% url 'pracai:probing_list' %}" class="btn btn-outline-primary me-2 mb-2">Probing</a>
+      <a href="{% url 'pracai:risk_assessment_list' %}" class="btn btn-outline-primary me-2 mb-2">Risk Assessment</a>
+      <a href="{% url 'pracai:self_reflection_list' %}" class="btn btn-outline-primary me-2 mb-2">Self-Reflection</a>
+      <a href="{% url 'pracai:mock_therapy_list' %}" class="btn btn-outline-primary me-2 mb-2">Mock Therapy</a>
+    </div>
+  </section>
+
+  <!-- Closing Call to Action -->
+  <section class="py-5 bg-light text-center">
+    <div class="container">
+      <h3 class="fw-bold">Train Like a Pro — With AI</h3>
+      <p class="text-muted">Let PracAI be your personal training partner, clinical supervisor, and confidence booster. Start your next session today.</p>
+      <a href="{% url 'pracai:my_conversations' %}" class="btn btn-success mt-3">Continue Where You Left Off</a>
+    </div>
+  </section>
+
+</main>
+
+{% endblock %}

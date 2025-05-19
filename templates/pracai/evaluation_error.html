@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <div class="alert alert-danger">
+    <h4 class="alert-heading">⚠️ Evaluation Error</h4>
+    <p>Sorry, something went wrong during the AI evaluation.</p>
+    <hr>
+    <p class="mb-0"><strong>Error:</strong> {{ error }}</p>
+  </div>
+  <a href="{% url 'pracai:client_list' %}" class="btn btn-secondary mt-3">Back to Client List</a>
+</div>
+{% endblock %}

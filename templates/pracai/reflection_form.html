@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mt-5">
+  <h2 class="mb-4">Session Reflection</h2>
+  <p class="text-muted">
+    Reflect on your counseling session with <strong>{{ conversation.client.name }}</strong>.
+  </p>
+
+  <form method="post">
+    {% csrf_token %}
+  
+    <div class="mb-4">
+      <label class="form-label fw-bold">1. What went well in this session?</label>
+      {{ form.noticed_strengths }}
+    </div>
+  
+    <div class="mb-4">
+      <label class="form-label fw-bold">2. What could have been done differently?</label>
+      {{ form.areas_to_improve }}
+    </div>
+  
+    <div class="mb-4">
+      <label class="form-label fw-bold">3. How did you feasdasdasdasdasel during the session?</label>
+      {{ form.emotional_response }}
+    </div>
+  
+    <div class="mb-4">
+      <label class="form-label fw-bold">4. How did the client respond to your interventions?</label>
+      {{ form.client_reaction }}
+    </div>
+  
+    <div class="mb-4">
+      <label class="form-label fw-bold">5. What would you like to try in future sessions?</label>
+      {{ form.next_steps }}
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Submit Reflection</button>
+  </form>
+  
+</div>
+
+{% endblock %}

@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="bg-light">
+    <div class="container">
+        <div class="mx-auto" style="max-width: 900px;">
+            <div class="row">
+                <div class="col-lg-12 mb-4 mb-sm-5">
+                    <div class="card card-style1 border-0">
+                        <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 mb-4 mb-lg-0">
+                                    <img src="{% static "files/headshot.jpeg" %}" alt="..." width="300">
+                                </div>
+                                <div class="col-lg-6 px-xl-10">
+                                    <div class="d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-3 rounded">
+                                        <h3 class="h2 text-dark mb-0">Junsang Jason Park</h3>
+                                        <span class="text-muted">Doctoral Candidate in Counseling Psychology</span>
+                                    </div>
+                                    <ul class="list-unstyled mb-1-9">
+                                        <li class="mb-2 mb-xl-3 display-28">
+                                            <span class="display-26 text-secondary me-2 font-weight-600">Program:</span>
+                                            Counseling Psychology, University of Florida
+                                        </li>
+                                        <li class="mb-2 mb-xl-3 display-28">
+                                            <span class="display-26 text-secondary me-2 font-weight-600">Anticipated Graduation:</span>
+                                            Fall 2028
+                                        </li>
+                                        <li class="mb-2 mb-xl-3 display-28">
+                                            <span class="display-26 text-secondary me-2 font-weight-600">Research Interests:</span>
+                                            Education, Work, and Mental health and technology in research and practice
+                                        </li>
+                                        <li class="mb-2 mb-xl-3 display-28">
+                                            <span class="display-26 text-secondary me-2 font-weight-600">Latest Project:</span>
+                                            <a href="{% url 'pracai:home' %}" target="_blank">Try my latest tool for therapist training!</a>
+                                        </li>
+                                    </ul>
+                                    <hr class="my-3" style="border-top: 1px solid #ccc;">
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="mb-2 mb-xl-2 display-28">
+                                            <span class="display-26 text-secondary me-2 font-weight-600">Email:</span>
+                                            junsangpark@ufl.edu
+                                        </li>
+                                        <li class="mb-2 mb-xl-2 display-28">
+                                            <span class="display-26 text-secondary me-2 font-weight-600">Google Scholar:</span>
+                                            <a href="https://scholar.google.com/citations?user=2ke3rOYAAAAJ&hl=en" target="_blank">View Profile</a>
+                                        </li>
+                                        <li class="mb-2 mb-xl-2 display-28">
+                                            <span class="display-26 text-secondary me-2 font-weight-600">CV:</span>
+                                            <a href="{% static 'files/Park_CV_021325.pdf' %}" target="_blank">View PDF</a>
+                                        </li>
+                                    </ul>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 mb-4 ">
+                    <div>
+                        <span class="section-title text-primary mb-3 mb-sm-4">Education</span>
+                    
+                        <p class="mb-1-9">
+                            <strong>University of Florida</strong> <br>
+                            Ph.D. in Counseling Psychology (2022 – present) <br>
+                            Advisor: Ryan D. Duffy, Ph.D. <br>
+                            Minor: Computer Science <br>
+                            Minor Advisor: Sharon Lynn Chu, Ph.D.
+                        </p>
+                    
+                        <p class="mb-1-9">
+                            <strong>Seoul National University</strong> <br>
+                            M.A. in Educational Counseling (2017 – 2022) <br>
+                            Advisor: Changdai Kim, Ed.D.
+                        </p>
+                    
+                        <p class="mb-1-9">
+                            <strong>Dankook University</strong> <br>
+                            B.A. in Counseling (2013 – 2017)
+                        </p>
+                    </div>
+                    
+                </div>
+                <div class="col-lg-12 mb-4 mb-sm-5">
+                    <div>
+                        <span class="section-title text-primary mb-3 mb-sm-4">About Me</span>
+                        <p>I am a Ph.D. candidate with a strong interdisciplinary focus on mental health. My research centers on understanding both the influential factors that shape mental health—such as educational, occupational, and developmental experiences—and how mental health, in turn, impacts life outcomes. This dual perspective drives my core interest: uncovering what contributes to mental well-being and how mental health influences individuals across the lifespan.</p>
+                        <p>My clinical and practical experiences have revealed a critical gap in access to mental health resources, especially for marginalized or underserved populations. This discrepancy motivates my work in developing innovative, technology-driven solutions to reduce mental health disparities.</p>
+                        <p>In the realm of technology, I conduct data-driven research to identify patterns and disparities in mental health across populations. I also leverage artificial intelligence—particularly generative AI—to create tools aimed at improving mental health accessibility and support. These include AI-based mindfulness applications, psychoeducational modules, and training tools that can supplement traditional mental health care or reach individuals who might not otherwise have access.</p>
+                        <p class="mb-0">Ultimately, my goal is to bridge the gap between mental health science and scalable, real-world applications that promote mental well-being for all.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 mb-4">
+                    <div>
+                        <span class="section-title text-primary mb-3 mb-sm-4">Skillset</span>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="skillset-category">
+                                    <h5 class="text-dark">Research Methods</h5>
+                                    <ul class="list-unstyled">
+                                        <li>Quantitative Research</li>
+                                        <li>Qualitative Research</li>
+                                        <li>Experimental Research</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="skillset-category">
+                                    <h5 class="text-dark">Technical Skills</h5>
+                                    <ul class="list-unstyled">
+                                        <li>Python</li>
+                                        <li>R</li>
+                                        <li>Mplus</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="skillset-category">
+                                    <h5 class="text-dark">Advanced Techniques</h5>
+                                    <ul class="list-unstyled">
+                                        <li>Machine Learning</li>
+                                        <li>Natural Language Processing</li>
+                                        <li>Generative AI Integration</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="skillset-category">
+                                    <h5 class="text-dark">Specialized Fields</h5>
+                                    <ul class="list-unstyled">
+                                        <li>Education, Work, and Mental Health</li>
+                                        <li>Human-Computer Interaction (HCI)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h3>Session History</h3>
+  <ul class="list-group">
+    {% for convo in conversations %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <strong>{{ convo.client.name }}</strong> – Session {{ convo.client_session.session_number }}
+          <br>
+          <small class="text-muted">Started at: {{ convo.started_at|date:"Y-m-d H:i" }}</small>
+        </div>
+        <a href="{% url 'pracai:view_conversation' convo.uuid %}" class="btn btn-sm btn-outline-primary">View</a>
+      </li>
+    {% empty %}
+      <li class="list-group-item">You have no saved conversations.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

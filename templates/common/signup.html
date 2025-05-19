@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-3">
+    <form method="post" action="{% url 'common:signup' %}">
+        {% csrf_token %}
+        {% include "form_errors.html" %}
+
+        <div class="mb-3">
+            <label for="username">User ID</label>
+            {{ form.username }}
+        </div>
+
+        <div class="mb-3">
+            <label for="first_name">First Name</label>
+            {{ form.first_name }}
+        </div>
+        
+        <div class="mb-3">
+            <label for="last_name">Last Name</label>
+            {{ form.last_name }}
+        </div>
+
+        <div class="mb-3">
+            <label for="email">Email</label>
+            {{ form.email }}
+        </div>
+
+        <div class="mb-3">
+            <label for="birthdate">Birthdate</label>
+            {{ form.birthdate }}
+        </div>
+
+        <div class="mb-3">
+            <label for="role">Role</label>
+            {{ form.role }}
+        </div>
+
+        <div class="mb-3">
+            <label for="training_level">Training Level</label>
+            {{ form.training_level }}
+        </div>
+
+        <div class="mb-3">
+            <label for="institution">Institution</label>
+            {{ form.institution }}
+        </div>
+
+        <div class="mb-3">
+            <label for="program">Program</label>
+            {{ form.program }}
+        </div>
+
+        <div class="mb-3">
+            <label for="password1">Password</label>
+            {{ form.password1 }}
+        </div>
+
+        <div class="mb-3">
+            <label for="password2">Confirm Password</label>
+            {{ form.password2 }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Sign up</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,180 @@
+<!-- 네비게이션바 -->
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'homeview' %}">J.Spark</a>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left-aligned blog -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.view_name == 'homeview' %}active{% endif %}" href="{% url 'homeview' %}">About</a>
+                </li>
+                <li class="nav-item">
+                    <!-- <a class="nav-link" href="{% url 'pybo:index' %}">Blog</a> -->
+                    <a class="nav-link {% if request.resolver_match.view_name == 'pybo:index' %}active{% endif %}" href="{% url 'pybo:index' %}">Blog</a>
+                </li>
+                <!-- PracAI Dropdown -->
+                <li class="nav-item dropdown">
+                    {% if user.is_authenticated %}
+                    {% if request.resolver_match.view_name == 'pracai:home' %}
+                    <a class="nav-link dropdown-toggle active" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        PracAI
+                    </a>
+                    {% elif request.resolver_match.view_name == 'pracai:client_list' %}
+                    <a class="nav-link dropdown-toggle active" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Virtual client
+                    </a>
+                    {% elif request.resolver_match.view_name == 'pracai:chat' %}
+                    <a class="nav-link dropdown-toggle active" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Mock therapy
+                    </a>
+                    {% elif request.resolver_match.view_name == 'pracai:probing' %}
+                    <a class="nav-link dropdown-toggle active" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Probing
+                    </a>
+                    {% elif request.resolver_match.view_name == 'pracai:reflection' %}
+                    <a class="nav-link dropdown-toggle active" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Reflection
+                    </a>
+                    {% elif request.resolver_match.view_name == 'pracai:risk_assessment' %}
+                    <a class="nav-link dropdown-toggle active" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Risk assessment
+                    </a>
+                    {% elif request.resolver_match.view_name == 'pracai:self_reflection_list' %}
+                    <a class="nav-link dropdown-toggle active" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Self-reflection
+                    </a>
+                    {% else %}
+                    <a class="nav-link dropdown-toggle" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        PracAI
+                    </a>
+                    {% endif %}
+                    {% endif %}
+                    <ul class="dropdown-menu" aria-labelledby="pracaiDropdown">
+                        {% if user.is_authenticated %}
+                        <li><a class="dropdown-item" href="{% url 'pracai:home' %}">Overview</a></li>
+                        <li><a class="dropdown-item" href="{% url 'pracai:client_list' %}">Virtual client</a></li>
+                        <li><a class="dropdown-item" href="{% url 'pracai:mock_therapy_list' %}">Mock therapy</a></li>
+                        <li><a class="dropdown-item" href="{% url 'pracai:probing_list' %}">Probing</a></li>
+                        <li><a class="dropdown-item" href="{% url 'pracai:reflection_list' %}">Reflection</a></li>
+                        <li><a class="dropdown-item" href="{% url 'pracai:risk_assessment_list' %}">Risk assessment</a></li>
+                        <li><a class="dropdown-item" href="{% url 'pracai:self_reflection_list' %}">Self-reflection</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    {% if user.is_authenticated %}
+                    {% if request.resolver_match.view_name == 'pracai_kr:home' %}
+                    <a class="nav-link dropdown-toggle active" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        PracAI_KR
+                    </a>
+                    {% elif request.resolver_match.view_name == 'pracai_kr:client_list' %}
+                    <a class="nav-link dropdown-toggle active" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        가상 내담자
+                    </a>
+                    {% elif request.resolver_match.view_name == 'pracai_kr:chat' %}
+                    <a class="nav-link dropdown-toggle active" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        모의 상담
+                    </a>
+                    {% elif request.resolver_match.view_name == 'pracai_kr:probing' %}
+                    <a class="nav-link dropdown-toggle active" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        탐색
+                    </a>
+                    {% elif request.resolver_match.view_name == 'pracai_kr:reflection' %}
+                    <a class="nav-link dropdown-toggle active" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        반영
+                    </a>
+                    {% elif request.resolver_match.view_name == 'pracai_kr:risk_assessment' %}
+                    <a class="nav-link dropdown-toggle active" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        위험 평가
+                    </a>
+                    {% elif request.resolver_match.view_name == 'pracai_kr:self_reflection_list' %}
+                    <a class="nav-link dropdown-toggle active" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        자기 성찰
+                    </a>
+                    {% else %}
+                    <a class="nav-link dropdown-toggle" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        PracAI_KR
+                    </a>
+                    {% endif %}
+                    {% endif %}
+                    <ul class="dropdown-menu" aria-labelledby="pracaiDropdown">
+                        {% if user.is_authenticated %}
+                        <li><a class="dropdown-item" href="{% url 'pracai_kr:home' %}">개요</a></li>
+                        <li><a class="dropdown-item" href="{% url 'pracai_kr:client_list' %}">가상 내담자</a></li>
+                        <li><a class="dropdown-item" href="{% url 'pracai_kr:mock_therapy_list' %}">모의 상담</a></li>
+                        <li><a class="dropdown-item" href="{% url 'pracai_kr:probing_list' %}">탐색</a></li>
+                        <li><a class="dropdown-item" href="{% url 'pracai_kr:reflection_list' %}">반영</a></li>
+                        <li><a class="dropdown-item" href="{% url 'pracai_kr:risk_assessment_list' %}">위험 평가</a></li>
+                        <li><a class="dropdown-item" href="{% url 'pracai_kr:self_reflection_list' %}">자기 성찰</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+                
+                <!-- ChatDBT Dropdown -->
+                <li class="nav-item dropdown">
+                    {% if user.is_authenticated %}
+                    {% if request.resolver_match.view_name == 'chatdbt:home' %}
+                    <a class="nav-link dropdown-toggle active" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        ChatDBT
+                    </a>
+                    {% elif request.resolver_match.view_name == 'chatdbt:mindfulness' %}
+                    <a class="nav-link dropdown-toggle active" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Mindfulness
+                    </a>
+                    {% elif request.resolver_match.view_name == 'chatdbt:tolerance' %}
+                    <a class="nav-link dropdown-toggle active" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Distress tolerance
+                    </a>
+                    {% elif request.resolver_match.view_name == 'chatdbt:regulation' %}
+                    <a class="nav-link dropdown-toggle active" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Emotional regulation
+                    </a>
+                    {% elif request.resolver_match.view_name == 'chatdbt:interpersonal' %}
+                    <a class="nav-link dropdown-toggle active" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Interpersonal effectiveness
+                    </a>
+                    {% else %}
+                    <a class="nav-link dropdown-toggle" href="#" id="pracaiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        ChatDBT
+                    </a>
+                    {% endif %}
+                    {% endif %}
+                    <ul class="dropdown-menu" aria-labelledby="pracaiDropdown">
+                        {% if user.is_authenticated %}
+                        <li><a class="dropdown-item" href="{% url 'chatdbt:home' %}">Overview</a></li>
+                        <li><a class="dropdown-item" href="{% url 'chatdbt:mindfulness' %}">Mindfulness</a></li>
+                        <li><a class="dropdown-item" href="{% url 'chatdbt:tolerance' %}">Distress tolerance</a></li>
+                        <li><a class="dropdown-item" href="{% url 'chatdbt:regulation' %}">Emotional regulation</a></li>
+                        <li><a class="dropdown-item" href="{% url 'chatdbt:interpersonal' %}">Interpersonal effectiveness</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+            </ul>
+            <!-- Right-aligned login and sign up -->
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    {% if user.is_authenticated %}
+                    <a class="nav-link" href="{% url 'common:logout' %}">{{ user.username }} (Logout)</a>
+                    {% else %}
+                    <a class="nav-link" href="{% url 'common:login' %}">Login</a>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    {% if not user.is_authenticated %}
+                    <a class="nav-link" href="{% url 'common:signup' %}">Sign up</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

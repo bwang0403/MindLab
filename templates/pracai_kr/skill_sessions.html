@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <main role="main" class="container mt-5">
+    <section class="py-5">
+      <div class="container px-4 py-5">
+        <h2 class="fw-bold text-body-emphasis display-4 capitalize-text">{{ category.display_name }} 세션 목록</h2>
+        <p class="text-body-secondary lead mb-4">{{ category.description|linebreaksbr }}</p>
+
+        <div class="list-group list-group-flush">
+          {% for session in sessions %}
+            <a 
+              href="{% url 'pracai_kr:'|add:category.slug session.id %}" 
+              class="list-group-item list-group-item-action border-0 shadow-sm rounded-3 mb-3 bg-light hover-shadow-lg">
+              <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-1 text-dark">{{ session.display_title }}</h5>
+                <span class="badge bg-primary text-white rounded-pill">세션 {{ session.session_number }}</span>
+              </div>
+              <p class="mb-1 text-muted">{{ session.description }}</p>
+              <small class="text-info">이 세션을 통해 {{ category.display_name }} 역량을 강화해보세요.</small>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <style>
+    .hover-shadow-lg:hover {
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+{% endblock %}

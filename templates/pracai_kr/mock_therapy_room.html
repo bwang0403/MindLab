@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="chat-container">
+  <div class="card flex-grow-1">
+    <div class="card-body messages-box">
+      <ul class="list-unstyled messages-list">
+
+        <!-- 시스템 메시지: 세션 및 내담자 정보 -->
+        <li class="message system-message mt-3">
+          <div class="d-flex align-items-center">
+            {% if client.avatar_image %}
+              <img src="{{ client.avatar_image.url }}" alt="{{ client.name }}" class="rounded-circle me-3" width="50" height="50">
+            {% else %}
+              <img src="{% static 'files/default-avatar.png' %}" alt="{{ client.name }}" class="rounded-circle me-3" width="50" height="50">
+            {% endif %}
+            <div class="message-text">
+              <strong>{{ client.name }}</strong> ({{ client.pronouns }})<br>
+              <strong>주 호소 문제:</strong> {{ client.presenting_problem }}<br>
+              <strong>성격:</strong> {{ client.personality_style }}
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+    <br><br>
+    <br><br>
+    <br><br>
+  </div>
+
+  <form class="message-form">
+    {% csrf_token %}
+    <div class="input-group">
+      {% if not user.is_authenticated %}
+        <input disabled type="text" class="form-control message-input" placeholder="PracAI를 사용하려면 로그인하세요.">
+        <button type="submit" class="btn btn-primary btn-send">전송</button>
+      {% else %}
+        <input type="text" class="form-control message-input" placeholder="메시지를 입력하세요...">
+        <button type="submit" class="btn btn-primary btn-send">전송</button>
+      {% endif %}
+    </div>
+  </form>
+</div>
+
+<script src="{% static 'js/chat_kr.js' %}"></script>
+{% endblock %}

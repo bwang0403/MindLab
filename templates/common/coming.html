@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <main role="main" class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="text-center">
+      <h1 class="display-1 fw-bold text-primary mb-4">Coming Soon</h1>
+      <p class="lead mb-4 text-muted">We're working hard behind the scenes to bring you something amazing. Stay tuned, it's worth the wait!</p>
+
+      <div class="d-flex justify-content-center mb-4">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      <p class="text-muted">In the meantime, feel free to explore the other sessions, or relax and enjoy some mindfulness!</p>
+
+      <a href="/" class="btn btn-outline-primary btn-lg mt-4">Go Back to Homepage</a>
+    </div>
+  </main>
+
+  <style>
+    .container {
+      background-color: #f8f9fa;
+    }
+
+    h1 {
+      font-size: 6rem;
+      letter-spacing: 5px;
+      color: #007bff;
+      text-shadow: 2px 2px 8px rgba(0, 123, 255, 0.6);
+    }
+
+    .lead {
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: #6c757d;
+    }
+
+    .btn-outline-primary {
+      border-width: 2px;
+      padding: 12px 30px;
+      font-size: 1.25rem;
+      letter-spacing: 1px;
+    }
+
+    .btn-outline-primary:hover {
+      background-color: #007bff;
+      color: white;
+      border-color: #007bff;
+    }
+
+    .spinner-border {
+      width: 3rem;
+      height: 3rem;
+      border-width: 0.3em;
+    }
+  </style>
+{% endblock %}

@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+<body>
+  <main role="main" class="container mt-5">
+    {% block content %}
+
+    <!-- Welcome Section -->
+    <section class="py-5">
+      <div class="container px-4 py-5" id="features">
+        <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+          
+          <!-- Left side: Welcome -->
+          <div class="col d-flex flex-column align-items-start gap-2">
+            <h2 class="fw-bold text-body-emphasis">Welcome to ChatDBT</h2>
+            <p class="text-body-secondary">
+              ChatDBT is your digital guide to practicing Dialectical Behavior Therapy (DBT) skills through interactive chatbot-based sessions. Explore mindfulness, emotional regulation, distress tolerance, and interpersonal effectiveness in a safe and structured way.
+            </p>
+            <a href="{% url 'chatdbt:mindfulness' %}" class="btn btn-primary btn-lg">Browse Mindfulness Module</a>
+          </div>
+
+          <!-- Right side: Features -->
+          <div class="col">
+            <div class="row row-cols-1 row-cols-sm-2 g-4">
+
+              <div class="col d-flex flex-column gap-2 position-relative">
+                <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                  <i class="bi bi-sun"></i>
+                </div>
+                <h4 class="fw-semibold mb-0 text-body-emphasis">Mindfulness</h4>
+                <p class="text-body-secondary">Build present-moment awareness with guided “what” and “how” skill practices.</p>
+                <a href="{% url 'chatdbt:mindfulness' %}" class="stretched-link text-decoration-none">Begin Mindfulness</a>
+              </div>
+
+              <div class="col d-flex flex-column gap-2 position-relative">
+                <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-warning bg-gradient fs-4 rounded-3">
+                  <i class="bi bi-fire"></i>
+                </div>
+                <h4 class="fw-semibold mb-0 text-body-emphasis">Distress Tolerance</h4>
+                <p class="text-body-secondary">Learn crisis survival skills to manage emotional storms without making things worse.</p>
+                <a href="{% url 'chatdbt:tolerance' %}" class="stretched-link text-decoration-none">Coming Soon</a>
+              </div>
+
+              <div class="col d-flex flex-column gap-2 position-relative">
+                <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-success bg-gradient fs-4 rounded-3">
+                  <i class="bi bi-emoji-smile"></i>
+                </div>
+                <h4 class="fw-semibold mb-0 text-body-emphasis">Emotion Regulation</h4>
+                <p class="text-body-secondary">Understand and regulate your emotions with step-by-step chatbot exercises.</p>
+                <a href="{% url 'chatdbt:regulation' %}" class="stretched-link text-decoration-none">Coming Soon</a>
+              </div>
+
+              <div class="col d-flex flex-column gap-2 position-relative">
+                <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-danger bg-gradient fs-4 rounded-3">
+                  <i class="bi bi-people-fill"></i>
+                </div>
+                <h4 class="fw-semibold mb-0 text-body-emphasis">Interpersonal Effectiveness</h4>
+                <p class="text-body-secondary">Develop assertiveness and communication skills for healthier relationships.</p>
+                <a href="{% url 'chatdbt:interpersonal' %}" class="stretched-link text-decoration-none">Coming Soon</a>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Second section -->
+    <section class="py-5 bg-light">
+      <div class="container px-4 py-5">
+        <h2 class="pb-2 border-bottom">What You Can Do with ChatDBT</h2>
+
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+          <div class="col d-flex align-items-start">
+            <i class="bi bi-chat-dots-fill text-primary fs-1 me-3"></i>
+            <div>
+              <h4 class="fw-bold mb-1">Practice Core DBT Skills</h4>
+              <p>Go through skill modules interactively with chatbot guidance and reflection prompts.</p>
+            </div>
+          </div>
+
+          <div class="col d-flex align-items-start">
+            <i class="bi bi-hourglass-split text-success fs-1 me-3"></i>
+            <div>
+              <h4 class="fw-bold mb-1">Track Your Progress</h4>
+              <p>Get a record of your session completions, reflections, and conversation history.</p>
+            </div>
+          </div>
+
+          <div class="col d-flex align-items-start">
+            <i class="bi bi-bounding-box text-danger fs-1 me-3"></i>
+            <div>
+              <h4 class="fw-bold mb-1">Expand with More Modules</h4>
+              <p>Distress tolerance, emotion regulation, and interpersonal effectiveness coming soon.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% endblock %}
+  </main>
+
+  {% block scripts %}
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  {% endblock %}
+</body>

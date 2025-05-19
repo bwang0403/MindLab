@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Full-width container with centered content -->
+<div class="d-flex justify-content-center w-100 bg-body-tertiary" style="min-height: 95vh;">
+
+  <div class="d-flex flex-nowrap w-100" style="max-width: 1200px; min-height: 95vh;">
+
+    <!-- Sidebar (Desktop) -->
+    <div class="d-none d-md-block bg-light border-end p-3"
+         style="width: 280px; overflow-y: auto; position: sticky; top: 72px;">
+      {% if client.avatar_image %}
+        <img src="{{ client.avatar_image.url }}" alt="{{ client.name }}" class="rounded-circle mb-3" width="100" height="100">
+      {% else %}
+        <img src="{% static 'files/default-avatar.png' %}" alt="{{ client.name }}" class="rounded-circle mb-3" width="100" height="100">
+      {% endif %}
+      <h5>{{ client.name }} <small class="text-muted">({{ client.pronouns }})</small></h5>
+      <hr>
+      <p><strong>Presenting Problem:</strong><br>{{ client.presenting_problem }}</p>
+      <p><strong>Personality:</strong><br>{{ client.personality_style }}</p>
+
+      {% if session %}
+        <hr>
+        <p><strong>Session:</strong> #{{ session.session_number }}</p>
+        <p><strong>Title:</strong><br>{{ session.title }}</p>
+        <p><strong>Description:</strong><br><em>{{ session.description }}</em></p>
+      {% endif %}
+
+      {% if user.is_authenticated %}
+        <form id="save-session-form" action="{% url 'pracai:save_conversation' conversation.uuid %}" method="post" class="mt-4">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-success w-100">Save Session</button>
+        </form>
+      {% endif %}
+    </div>
+
+    <!-- Main Chat Area -->
+    <div class="flex-grow-1 d-flex flex-column p-0 bg-white shadow-sm">
+      <!-- Mobile Sidebar Toggle -->
+      <div class="bg-light border-bottom p-2 d-md-none">
+        <button class="btn btn-outline-secondary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#mobileSidebar">
+          Show Client Info
+        </button>
+      </div>
+
+      <!-- Collapsible Mobile Sidebar -->
+      <div class="collapse bg-light border p-3 d-md-none" id="mobileSidebar">
+        {% if client.avatar_image %}
+          <img src="{{ client.avatar_image.url }}" alt="{{ client.name }}" class="rounded-circle mb-3" width="100" height="100">
+        {% else %}
+          <img src="{% static 'files/default-avatar.png' %}" alt="{{ client.name }}" class="rounded-circle mb-3" width="100" height="100">
+        {% endif %}
+        <h5>{{ client.name }} <small class="text-muted">({{ client.pronouns }})</small></h5>
+        <hr>
+        <p><strong>Presenting Problem:</strong><br>{{ client.presenting_problem }}</p>
+        <p><strong>Personality:</strong><br>{{ client.personality_style }}</p>
+
+        {% if session %}
+          <hr>
+          <p><strong>Session:</strong> #{{ session.session_number }}</p>
+          <p><strong>Title:</strong><br>{{ session.title }}</p>
+          <p><strong>Description:</strong><br><em>{{ session.description }}</em></p>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+          <form id="save-session-form" action="{% url 'pracai:save_conversation' conversation.uuid %}" method="post" class="mt-4">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success w-100">End Session</button>
+          </form>
+        {% endif %}
+      </div>
+
+      <!-- Chat Display Area -->
+      <div class="card flex-grow-1 border-0 rounded-0">
+        <div class="card-body messages-box overflow-auto" style="height: calc(100vh - 220px);">
+          <ul class="list-unstyled messages-list">
+            <!-- Messages will be rendered here -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- ✅ Chat Input Form (Matching Chat Area Width) -->
+      <div class="chat-input-wrapper border-top p-3 bg-white" style="max-width: 920px; margin-left: auto; margin-right: auto; width: 100%;">
+        {% if not user.is_authenticated %}
+          <div class="d-flex gap-2">
+            <input disabled type="text" class="form-control" placeholder="Please login to interact with PracAI.">
+            <button type="button" class="btn btn-primary" disabled>Send</button>
+          </div>
+        {% else %}
+          <form class="message-form d-flex gap-2 align-items-center" method="post">
+            {% csrf_token %}
+            <input
+              type="text"
+              name="message"
+              class="form-control message-input"
+              placeholder="Type your message..."
+              style="min-height: 48px;"
+            >
+            <button type="submit" class="btn btn-primary px-4" style="min-width: 90px;">Send</button>
+          </form>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/chat.js' %}"></script>
+
+<!-- Confirm before Save -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("save-session-form");
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        const confirmed = confirm("Are you sure you want to save this session?\nOnce saved, you will leave this page.");
+        if (!confirmed) {
+          e.preventDefault();
+        }
+      });
+    }
+  });
+</script>
+
+{% endblock %}

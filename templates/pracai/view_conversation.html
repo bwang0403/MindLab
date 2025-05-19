@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4>Conversation with {{ conversation.client.name }}</h4>
+    {% if not conversation.evaluation %}
+      <a href="{% url 'pracai:evaluate_conversation' conversation.uuid %}" class="btn btn-sm btn-warning">🔍 Run AI Evaluation</a>
+    {% endif %}
+  </div>
+
+  <!-- Reflection Section -->
+  {% if conversation.reflection %}
+    <div class="mb-4 p-4 border border-success rounded bg-light">
+      <div class="d-flex justify-content-between align-items-center">
+        <h5 class="mb-3">📝 Your Reflection</h5>
+        <a href="{% url 'pracai:reflect_on_conversation' conversation.uuid %}" class="btn btn-outline-secondary btn-sm">Edit</a>
+      </div>
+      <ul class="list-unstyled">
+        <li class="mb-2"><strong>✔ What went well:</strong><br>{{ conversation.reflection.noticed_strengths }}</li>
+        <li class="mb-2"><strong>🔁 What could have been done differently:</strong><br>{{ conversation.reflection.areas_to_improve }}</li>
+        <li class="mb-2"><strong>💭 How did you feel:</strong><br>{{ conversation.reflection.emotional_response }}</li>
+        <li class="mb-2"><strong>🎭 Client's reaction:</strong><br>{{ conversation.reflection.client_reaction }}</li>
+        <li><strong>🚀 Next steps:</strong><br>{{ conversation.reflection.next_steps }}</li>
+      </ul>
+    </div>
+  {% else %}
+    <a href="{% url 'pracai:reflect_on_conversation' conversation.uuid %}" class="btn btn-outline-secondary btn-sm mb-4">📝 Reflect on this Session</a>
+  {% endif %}
+
+  <!-- AI Evaluation Section -->
+  {% if conversation.evaluation %}
+    <div class="mb-4 p-4 border border-info rounded bg-white">
+      <h5 class="mb-3">👩‍🏫 AI Supervisor Feedback</h5>
+      <pre class="bg-light p-3 border rounded" style="white-space: pre-wrap;">{{ conversation.evaluation.evaluation_text }}</pre>
+    </div>
+  {% endif %}
+
+  <!-- Message History -->
+  <hr>
+  <div class="border rounded p-3" style="background-color: #f8f9fa;">
+    {% for message in messages %}
+      <div class="{% if message.is_bot %}text-end{% else %}text-start{% endif %} mb-3">
+        <span class="badge {% if message.is_bot %}bg-secondary{% else %}bg-primary{% endif %}">
+          {% if message.is_bot %}Bot{% else %}You{% endif %}
+        </span>
+        <div class="mt-1 p-2 rounded bg-white border">
+          {{ message.message }}
+        </div>
+        <small class="text-muted">{{ message.created_at|date:"Y-m-d H:i" }}</small>
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}

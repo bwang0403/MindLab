@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="chat-container">
+  <div class="card flex-grow-1">
+    <div class="card-body messages-box">
+      <ul class="list-unstyled messages-list">
+        <li class="message system-message">
+          <div class="message-text">
+            🧠 "{{ session.category.name }}" 연습 공간에 오신 것을 환영합니다. <br>
+            <strong>세션:</strong> {{ session.title }} <br>
+            <em>{{ session.description }}</em>
+          </div>
+        </li>        
+      </ul>
+    </div>
+    <br><br>
+    <br><br>
+    <br><br>
+  </div>
+
+  <form class="message-form">
+    {% csrf_token %}
+    <div class="input-group">
+      {% if not user.is_authenticated %}
+        <input disabled type="text" class="form-control message-input" placeholder="PracAI를 이용하려면 로그인해주세요.">
+        <button type="submit" class="btn btn-primary btn-send">전송</button>
+      {% else %}
+        <input type="text" class="form-control message-input" placeholder="메시지를 입력하세요...">
+        <button type="submit" class="btn btn-primary btn-send">전송</button>
+      {% endif %}
+    </div>
+  </form>
+</div>
+
+{% load static %}
+<script src="{% static 'js/training_kr.js' %}"></script>
+{% endblock %}
